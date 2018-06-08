@@ -1,0 +1,1 @@
+g++ test.cpp -Iinclude -o test.exe && ./test.exe

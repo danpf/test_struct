@@ -4,7 +4,7 @@ rm -rf ./bindings/ && mkdir bindings/ \
 $HOME/git/binder/build/llvm-4.0.0/build_4.0.0*/bin/binder \
   --root-module test_struct \
   --prefix $HOME/git/test_struct/bindings/ \
-  --bind testers -trace \
+  --bind "" -trace \
   all_includes.hpp \
   -- -std=c++11 -I$HOME/git/test_struct/include \
   -DMY_PROJECT_DEFINE -DNDEBUG  && \
