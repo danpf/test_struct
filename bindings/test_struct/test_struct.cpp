@@ -14,7 +14,7 @@
 void bind_test_struct_test_struct(std::function< pybind11::module &(std::string const &namespace_) > &M)
 {
 	std::cout << "B0_[testers::test_my_struct] ";
-	{ // testers::test_my_struct file:test_struct/test_struct.hpp line:6
+	{ // testers::test_my_struct file:test_struct/test_struct.hpp line:10
 		pybind11::class_<testers::test_my_struct, std::shared_ptr<testers::test_my_struct>> cl(M("testers"), "test_my_struct", "");
 		pybind11::handle cl_type = cl;
 

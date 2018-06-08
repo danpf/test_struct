@@ -1,4 +1,8 @@
 
+
+#ifndef TEST_STRUCT_H
+#define TEST_STRUCT_H
+
 #include <string>
 #include <vector>
 
@@ -33,3 +37,5 @@ struct test_my_struct {
 
 };
 }
+
+#endif

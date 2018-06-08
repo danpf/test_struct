@@ -1,6 +1,4 @@
 
-
-
 rm -rf ./bindings/ && mkdir bindings/ \
  # Make bindings\
 $HOME/git/binder/build/llvm-4.0.0/build_4.0.0*/bin/binder \
@@ -23,5 +21,3 @@ cd bindings && \
   -o test_struct.so -fPIC && \
   python3 -c "import sys; sys.path.append('.'); import test_struct" && \
   cd ../
-
-
