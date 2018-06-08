@@ -1,0 +1,27 @@
+
+
+
+rm -rf ./bindings/ && mkdir bindings/ \
+ # Make bindings\
+$HOME/git/binder/build/llvm-4.0.0/build_4.0.0*/bin/binder \
+  --root-module test_struct \
+  --prefix /home/danpf/git/test_struct/bindings/ \
+  --bind testers -trace \
+  all_includes.hpp \
+  -- -std=c++11 -I$HOME/git/test_struct/include \
+  -DMY_PROJECT_DEFINE -DNDEBUG  && \
+  \
+  \
+  \
+cd bindings && \
+  \
+  $HOME/git/binder/build/llvm-4.0.0/build_4.0.0.linux.danpf-lappytappy.release/bin/clang++ \
+  -O3 \
+  -I$HOME/miniconda3/envs/py3/include/python3.6m -I$HOME/git/binder/build/pybind11/include -I/home/danpf/test_struct/include \
+  -I/home/danpf/git/binder/source -shared \
+  -std=c++11  test_struct.cpp \
+  -o test_struct.so -fPIC && \
+  python3 -c "import sys; sys.path.append('.'); import test_struct" && \
+  cd ../
+
+
