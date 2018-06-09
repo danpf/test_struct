@@ -13,11 +13,20 @@ $HOME/git/binder/build/llvm-4.0.0/build_4.0.0*/bin/binder \
   \
 cd bindings && \
   \
-  $HOME/git/binder/build/llvm-4.0.0/build_4.0.0.*/bin/clang++ \
+  g++ \
   -O3 \
   -I$HOME/miniconda3/envs/py3/include/python3.6m -I$HOME/git/binder/build/pybind11/include -I$HOME/git/test_struct/include \
   -I$HOME/git/binder/source -shared \
-  -std=c++11  test_struct.cpp \
-  -o test_struct.so -fPIC && \
+  -std=c++11  -c test_struct.cpp  \
+  -o test_struct.o -fPIC && \
+  cd test_struct/ && \
+  g++ \
+  -O3 \
+  -I$HOME/miniconda3/envs/py3/include/python3.6m -I$HOME/git/binder/build/pybind11/include -I$HOME/git/test_struct/include \
+  -I$HOME/git/binder/source -shared  \
+  -std=c++11  -c test_struct.cpp  \
+  -o test_struct.o -fPIC && \
+  cd ../ && \
+  g++ -o test_struct.so -shared test_struct/test_struct.o test_struct.o && \
   python3 -c "import sys; sys.path.append('.'); import test_struct" && \
   cd ../
